@@ -76,16 +76,16 @@ class Sidebar(QtWidgets.QMainWindow):
         self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon(icon_pix), self)
         m = QtWidgets.QMenu()
 
-        act_show = m.addAction("Mostrar/Ocultar")
+        act_show = m.addAction("Show/Hide")
         act_show.triggered.connect(lambda: self.setVisible(not self.isVisible()))
 
         m.addSeparator()
 
-        act_focus = m.addAction("Foco Ãºnico"); act_focus.setCheckable(True); act_focus.setChecked(self.focus_single)
+        act_focus = m.addAction("Single Focus"); act_focus.setCheckable(True); act_focus.setChecked(self.focus_single)
         act_focus.toggled.connect(lambda v: setattr(self, "focus_single", bool(v)))
 
-        sub_edge = m.addMenu("Lado")
-        a_left = sub_edge.addAction("Esquerda"); a_right = sub_edge.addAction("Direita")
+        sub_edge = m.addMenu("Side")
+        a_left = sub_edge.addAction("Left"); a_right = sub_edge.addAction("Right")
         a_left.setCheckable(True); a_right.setCheckable(True)
 
         def _set_left():
@@ -94,11 +94,11 @@ class Sidebar(QtWidgets.QMainWindow):
             self.edge = ABE_RIGHT; self.reposition_appbar()
         a_left.triggered.connect(_set_left); a_right.triggered.connect(_set_right)
 
-        act_settings = m.addAction("ConfiguraÃ§Ãµesâ€¦"); act_settings.triggered.connect(self.open_settings)
-        act_save = m.addAction("Salvar configuraÃ§Ã£o"); act_save.triggered.connect(self.save_current_conf)
+        act_settings = m.addAction("Settings"); act_settings.triggered.connect(self.open_settings)
+        act_save = m.addAction("Save Settings"); act_save.triggered.connect(self.save_current_conf)
 
         m.addSeparator()
-        act_quit = m.addAction("Sair"); act_quit.triggered.connect(QtWidgets.QApplication.instance().quit)
+        act_quit = m.addAction("Exit"); act_quit.triggered.connect(QtWidgets.QApplication.instance().quit)
 
         self.tray.setContextMenu(m)
         self.tray.setToolTip("Stage Sidebar")

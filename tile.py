@@ -3,7 +3,7 @@ from PySide6 import QtWidgets
 from win_utils import * # Importa tudo
 
 
-TITLE_GAP = 2 # EspaÃ§o entre titulo e thumb
+TITLE_GAP = 2 # Espaço entre titulo e thumb
 
 
 # ===== Overlay window =====

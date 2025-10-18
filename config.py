@@ -12,7 +12,7 @@ CONF_DIR = PROJECT_DIR / "config"
 CONF_DIR.mkdir(parents=True, exist_ok=True)
 CONF_PATH = CONF_DIR / "config.json"
 
-DEFAULT_CONF = DEFAULT_CONF = {
+DEFAULT_CONF = {
     "monitor": 0,
     "edge": "left",
     "bar_width": 220,
