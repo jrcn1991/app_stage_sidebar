@@ -1,0 +1,22 @@
+{
+  "monitor": 1,
+  "edge": "left",
+  "bar_width": 220,
+  "bar_height_pct": 80,
+  "bar_offset_y": 125,
+  "visible_count": 5,
+  "overlap_pct": 0,
+  "gap_px": 15,
+  "item_width": 220,
+  "item_height": 165,
+  "exclude_execs": [],
+  "focus_single": true,
+  "start_hidden": false,
+  "icon_size": 30,
+  "icon_anchor": "bottom-left",
+  "icon_offset_x": 6,
+  "icon_offset_y": 6,
+  "icon_allow_drag": false,
+  "show_title": false,
+  "maximize_on_restore": true
+}
