@@ -1,13 +1,19 @@
-"""
-Stage Sidebar Configuração Padrão para o JSON
-"""
-
-import json
+import json, os, sys
 from pathlib import Path
 
 # ===== Config =====
-# Diretório do projeto (mesmo local deste script)
-PROJECT_DIR = Path(__file__).resolve().parent
+def get_base_dir() -> Path:
+    """Return a writable base directory for config storage."""
+    if hasattr(sys, "_MEIPASS"):
+        # Running from PyInstaller bundle
+        base = Path(os.getenv("APPDATA", Path.home())) / "StageSidebar"
+    else:
+        # Running from source
+        base = Path(__file__).resolve().parent
+    base.mkdir(parents=True, exist_ok=True)
+    return base
+
+PROJECT_DIR = get_base_dir()
 CONF_DIR = PROJECT_DIR / "config"
 CONF_DIR.mkdir(parents=True, exist_ok=True)
 CONF_PATH = CONF_DIR / "config.json"

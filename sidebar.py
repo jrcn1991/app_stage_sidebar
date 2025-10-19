@@ -2,6 +2,14 @@ from __future__ import annotations
 import  os as _os
 from setting import *
 from config import *
+import sys, os
+
+
+def resource_path(relative_path: str) -> str:
+    """Return absolute path for resources (works inside PyInstaller)."""
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 # ===== Sidebar =====
 class Sidebar(QtWidgets.QMainWindow):
@@ -69,11 +77,12 @@ class Sidebar(QtWidgets.QMainWindow):
         self._t_full.start()
 
     # ===== Tray =====
+
     def make_tray(self) -> None:
         if not QtWidgets.QSystemTrayIcon.isSystemTrayAvailable():
             return
-        icon_pix = QtGui.QPixmap(22, 22); icon_pix.fill(QtGui.QColor(0, 120, 215))
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon(icon_pix), self)
+        icon_path = resource_path("docs/stage-manager-icon.png")
+        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon(icon_path), self)
         m = QtWidgets.QMenu()
 
         act_show = m.addAction("Show/Hide")

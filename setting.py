@@ -11,7 +11,7 @@ from tile import *
 class SettingsDialog(QtWidgets.QDialog):
     def __init__(self, parent, monitors, state):
         super().__init__(parent)
-        self.setWindowTitle("Settings")
+        self.setWindowTitle("Stage Sidebar - Settings")
         lay = QtWidgets.QFormLayout(self)
 
         self.cmb_screen = QtWidgets.QComboBox()
